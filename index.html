@@ -432,10 +432,11 @@
       </div>
     </div>
 
-    <div class="actions">
-      <button type="button" class="secondary-button" onclick="window.print()">Print / Save as PDF</button>
-      <button type="submit">Submit Order</button>
-    </div>
+<div class="actions">
+  <span class="status" id="status">Ready to submit.</span>
+  <button type="button" class="secondary-button" onclick="window.print()">Print / Save as PDF</button>
+  <button type="submit">Submit Order</button>
+</div>
   </form>
 
   <script>
@@ -828,9 +829,9 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
 
   } catch (error) {
     status.textContent = 'Submission failed. Please try again.';
+    console.error(error);
   }
 });
-
     renderProducts();
   </script>
 </body>
