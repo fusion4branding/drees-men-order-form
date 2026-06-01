@@ -435,7 +435,7 @@
 <div class="actions">
   <span class="status" id="status">Ready to submit.</span>
   <button type="button" class="secondary-button" onclick="window.print()">Print / Save as PDF</button>
-  <button type="submit">Submit Order</button>
+  <button type="button" onclick="submitOrder()">Submit Order</button>
 </div>
   </form>
 
@@ -790,13 +790,18 @@
       document.getElementById('totalQty').textContent = total;
     }
 
-document.getElementById('orderForm').addEventListener('submit', async function(event) {
-  event.preventDefault();
-
+async function submitOrder() {
+  const form = document.getElementById('orderForm');
   const status = document.getElementById('status');
+
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
   status.textContent = 'Submitting...';
 
-  const formData = new FormData(event.target);
+  const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
 
   data.formTitle = '2026 Production/Warranty – Men’s Order Form';
@@ -824,14 +829,14 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
     });
 
     status.textContent = 'Submitted successfully. Thank you!';
-    event.target.reset();
+    form.reset();
     document.getElementById('totalQty').textContent = '0';
 
   } catch (error) {
     status.textContent = 'Submission failed. Please try again.';
     console.error(error);
   }
-});
+}
     renderProducts();
   </script>
 </body>
