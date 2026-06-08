@@ -44,7 +44,6 @@
     h1 {
       text-align: center;
       font-size: 30px;
-      letter-spacing: 0.4px;
       margin: 0 0 8px;
       font-weight: 600;
     }
@@ -88,9 +87,7 @@
       color: #475569;
     }
 
-    input,
-    select,
-    textarea {
+    input, select, textarea {
       width: 100%;
       border: 1px solid var(--line);
       border-radius: 9px;
@@ -149,14 +146,14 @@
 
     .product-body {
       display: grid;
-      grid-template-columns: 210px 1fr;
+      grid-template-columns: 240px 1fr;
       gap: 20px;
       padding: 18px;
     }
 
     .product-image {
-      width: 210px;
-      min-height: 210px;
+      width: 240px;
+      min-height: 280px;
       border: 1px dashed #cbd5e1;
       border-radius: 14px;
       background: #f8fafc;
@@ -198,8 +195,7 @@
       font-size: 13px;
     }
 
-    th,
-    td {
+    th, td {
       border-bottom: 1px solid #edf1f7;
       padding: 9px 10px;
       text-align: left;
@@ -223,21 +219,21 @@
       text-align: center;
     }
 
-    .color-select-wrap {
-      display: grid;
-      grid-template-columns: 28px 1fr;
-      gap: 9px;
-      align-items: center;
-    }
+.color-select-wrap {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 12px;
+  align-items: center;
+}
 
-    .swatch {
-      width: 22px;
-      height: 22px;
-      border-radius: 5px;
-      border: 1px solid #cbd5e1;
-      flex: 0 0 auto;
-      background: #ffffff;
-    }
+.swatch {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  display: inline-block;
+}
 
     .note-blue {
       background: #eff6ff;
@@ -322,19 +318,6 @@
       margin-right: auto;
     }
 
-    @media print {
-      body { background: white; }
-
-      .page {
-        box-shadow: none;
-        margin: 0;
-        max-width: none;
-        border-radius: 0;
-      }
-
-      .actions { display: none; }
-    }
-
     @media (max-width: 900px) {
       .page {
         margin: 0;
@@ -350,7 +333,7 @@
 
       .product-image {
         width: 100%;
-        min-height: 220px;
+        min-height: 260px;
       }
 
       .actions {
@@ -436,15 +419,15 @@
         title: 'Under Armour Tech Polo Shirt',
         item: 'UA 1370399',
         key: 'under_armour_tech_polo',
-        image: 'https://i.imgur.com/jDGap5A.jpeg',
+        defaultImage: 'https://i.imgur.com/jDGap5A.jpeg',
         sizes: UA_SIZES,
         colors: [
-          { name: 'White/Graphite', hex: '#f8fafc' },
-          { name: 'Graphite/Black', hex: '#4b5563' },
-          { name: 'Royal/Graphite', hex: '#1d4ed8' },
-          { name: 'Red/Graphite', hex: '#dc2626' },
-          { name: 'Navy/Graphite', hex: '#172554' },
-          { name: 'Black/Graphite', hex: '#111827' }
+          { name: 'White/Graphite', preview: '#f8fafc', image: 'https://i.imgur.com/5NRzrBN.jpeg' },
+          { name: 'Graphite/Black', preview: '#4b5563', image: 'https://i.imgur.com/9Of9kGL.jpeg' },
+          { name: 'Royal/Graphite', preview: '#1d4ed8', image: 'https://i.imgur.com/jDGap5A.jpeg' },
+          { name: 'Red/Graphite', preview: '#dc2626', image: 'https://i.imgur.com/QrtHa7I.jpeg' },
+          { name: 'Navy/Graphite', preview: '#172554', image: 'https://i.imgur.com/I99mMXK.jpeg' },
+          { name: 'Black/Graphite', preview: '#111827', image: 'https://i.imgur.com/FukI3OW.jpeg' }
         ]
       },
       {
@@ -452,14 +435,14 @@
         title: 'Port Authority Easy Care Shirt – Short Sleeve',
         item: 'S508',
         key: 'pa_easy_care_short_sleeve',
-        image: 'https://i.imgur.com/Ovl19pQ.jpeg',
+        defaultImage: 'https://i.imgur.com/Ovl19pQ.jpeg',
         sizes: PORT_AUTHORITY_SIZES,
         tallAvailable: true,
         blueNote: 'Tall option is available for this item only.',
         colors: [
-          { name: 'White', hex: '#ffffff' },
-          { name: 'Stone', hex: '#c9b8a2' },
-          { name: 'Black', hex: '#111827' }
+          { name: 'White', preview: '#ffffff', image: 'https://i.imgur.com/IjY8xoX.jpeg' },
+          { name: 'Stone', preview: '#c9b8a2', image: 'https://i.imgur.com/jXqCr6H.jpeg' },
+          { name: 'Black', preview: '#111827', image: 'https://i.imgur.com/Ovl19pQ.jpeg' }
         ]
       },
       {
@@ -467,14 +450,14 @@
         title: 'Port Authority Easy Care Shirt – Long Sleeve',
         item: 'S608',
         key: 'pa_easy_care_long_sleeve',
-        image: 'https://i.imgur.com/QhxiClD.jpeg',
+        defaultImage: 'https://i.imgur.com/QhxiClD.jpeg',
         sizes: PORT_AUTHORITY_SIZES,
         tallAvailable: true,
         blueNote: 'Tall option is available for this item only.',
         colors: [
-          { name: 'White', hex: '#ffffff' },
-          { name: 'Stone', hex: '#c9b8a2' },
-          { name: 'Black', hex: '#111827' }
+          { name: 'White', preview: '#ffffff', image: 'https://i.imgur.com/91aP9B7.jpeg' },
+          { name: 'Stone', preview: '#c9b8a2', image: 'https://i.imgur.com/RXnJr8c.jpeg' },
+          { name: 'Black', preview: '#111827', image: 'https://i.imgur.com/QhxiClD.jpeg' }
         ]
       },
       {
@@ -482,13 +465,13 @@
         title: 'Eddie Bauer Short Sleeve Fishing Shirt',
         item: 'EB602',
         key: 'eddie_bauer_fishing_shirt',
-        image: 'https://i.imgur.com/a85W3I3.jpeg',
+        defaultImage: 'https://i.imgur.com/a85W3I3.jpeg',
         sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL', '4XL'],
         colors: [
-          { name: 'Driftwood', hex: '#c8bda6' },
-          { name: 'Gulf Teal', hex: '#6e8fa8' },
-          { name: 'Boulder', hex: '#222222' },
-          { name: 'White', hex: '#ffffff' }
+          { name: 'Driftwood', preview: '#c8bda6', image: 'https://i.imgur.com/LLbvZeY.jpeg' },
+          { name: 'Gulf Teal', preview: '#6e8fa8', image: 'https://i.imgur.com/C9Xc2Ea.jpeg' },
+          { name: 'Boulder', preview: '#222222', image: 'https://i.imgur.com/a85W3I3.jpeg' },
+          { name: 'White', preview: '#ffffff', image: 'https://i.imgur.com/iJJr5SK.jpeg' }
         ]
       },
       {
@@ -496,16 +479,13 @@
         title: 'North End Men’s Rain Jacket',
         item: '88083',
         key: 'north_end_rain_jacket',
-        image: 'https://i.imgur.com/mvZ0JZH.jpeg',
+        defaultImage: 'https://i.imgur.com/mvZ0JZH.jpeg',
         sizes: STANDARD_SIZES,
         blueNote: 'Optional jacket selection: You may select this OR the Eddie Bauer jacket in addition to your 5 shirts.',
         redNote: 'This item will be ordered after employee’s 90 day review.',
         colors: [
-          { name: 'Putty/Black', hex: '#d6cfbd' },
-          { name: 'Red', hex: '#7f1d1d' },
-          { name: 'Alpine Green', hex: '#14532d' },
-          { name: 'Midnight Navy', hex: '#111827' },
-          { name: 'Black', hex: '#000000' }
+          { name: 'Midnight Navy', preview: '#111827', image: 'https://i.imgur.com/T63S5na.jpeg' },
+          { name: 'Black', preview: '#000000', image: 'https://i.imgur.com/mvZ0JZH.jpeg' }
         ]
       },
       {
@@ -513,14 +493,14 @@
         title: 'Eddie Bauer Soft Shell Jacket',
         item: 'EB534',
         key: 'eddie_bauer_soft_shell_jacket',
-        image: 'https://i.imgur.com/hT9QXh8.jpeg',
+        defaultImage: 'https://i.imgur.com/hT9QXh8.jpeg',
         sizes: EB534_SIZES,
         blueNote: 'Optional jacket selection: You may select this OR the North End jacket in addition to your 5 shirts.',
         redNote: 'This item will be ordered after employee’s 90 day review.',
         colors: [
-          { name: 'Canteen Grey/Black', hex: '#6b7280' },
-          { name: 'Grey Steel/Black', hex: '#9ca3af' },
-          { name: 'Black/Black', hex: '#000000' }
+          { name: 'Canteen Grey/Black', preview: '#6b7280', image: 'https://i.imgur.com/CXA0TeW.jpeg' },
+          { name: 'Grey Steel/Black', preview: '#9ca3af', image: 'https://i.imgur.com/98JBZdY.jpeg' },
+          { name: 'Black/Black', preview: '#000000', image: 'https://i.imgur.com/hT9QXh8.jpeg' }
         ]
       }
     ];
@@ -541,7 +521,7 @@
 
           <div class="product-body">
             <div class="product-image">
-              ${product.image ? `<img src="${product.image}" alt="${product.title}">` : 'Product image placeholder<br>Add image URL later'}
+              <img id="${product.key}_main_image" src="${product.defaultImage}" alt="${product.title}">
             </div>
 
             <div>
@@ -563,17 +543,9 @@
 
                   <tbody>
                     <tr class="order-row" data-product-key="${product.key}">
-                      <td>
-                        <div class="color-select-wrap">
-                          <span class="swatch color-preview" id="${product.key}_preview"></span>
-                          ${colorDropdown(product)}
-                        </div>
-                      </td>
-
+                      <td>${colorDropdown(product)}</td>
                       <td>${sizeDropdown(product)}</td>
-
                       ${product.tallAvailable ? tallDropdown(product) : ''}
-
                       <td>
                         <input class="qty-input qty" type="number" min="0" name="${product.key}_qty" />
                       </td>
@@ -583,7 +555,7 @@
               </div>
 
               <div class="small-muted">
-                Select one color and size for this item.
+                Select one color and size for this item. Product image will update when a color is selected.
               </div>
             </div>
           </div>
@@ -599,12 +571,20 @@
 
     function colorDropdown(product) {
       return `
-        <select name="${product.key}_color" onchange="updateColorPreview(this, '${product.key}')">
-          <option value="">Select color</option>
-          ${product.colors.map(color => `
-            <option value="${color.name}" data-hex="${color.hex}">${color.name}</option>
-          `).join('')}
-        </select>
+        <div class="color-select-wrap">
+          <span class="swatch color-preview" id="${product.key}_preview"></span>
+          <select name="${product.key}_color" onchange="updateColorSelection(this, '${product.key}')">
+            <option value="">Select color</option>
+            ${product.colors.map(color => `
+              <option
+                value="${color.name}"
+                data-image="${color.image || ''}"
+                data-color="${color.preview || '#ffffff'}">
+                ${color.name}
+              </option>
+            `).join('')}
+          </select>
+        </div>
       `;
     }
 
@@ -628,13 +608,28 @@
       `;
     }
 
-    function updateColorPreview(select, productKey) {
+    function isPlaceholder(value) {
+      return !value || value.includes('PASTE_') || value.includes('_HERE');
+    }
+
+    function updateColorSelection(select, productKey) {
       const selectedOption = select.options[select.selectedIndex];
-      const hex = selectedOption.dataset.hex || '#ffffff';
+      const imageUrl = selectedOption.dataset.image || '';
+      const previewColor = selectedOption.dataset.color || '#ffffff';
+      const mainImage = document.getElementById(productKey + '_main_image');
       const preview = document.getElementById(productKey + '_preview');
+      const product = products.find(item => item.key === productKey);
 
       if (preview) {
-        preview.style.background = hex;
+        preview.style.background = previewColor;
+      }
+
+      if (!mainImage || !product) return;
+
+      if (!isPlaceholder(imageUrl)) {
+        mainImage.src = imageUrl;
+      } else {
+        mainImage.src = product.defaultImage;
       }
     }
 
@@ -692,9 +687,7 @@
         await fetch(WEB_APP_URL, {
           method: 'POST',
           mode: 'no-cors',
-          headers: {
-            'Content-Type': 'text/plain'
-          },
+          headers: { 'Content-Type': 'text/plain' },
           body: JSON.stringify(data)
         });
 
@@ -702,8 +695,12 @@
         form.reset();
         document.getElementById('totalQty').textContent = '0';
 
-        document.querySelectorAll('.color-preview').forEach(preview => {
-          preview.style.background = '#ffffff';
+        products.forEach(product => {
+          const mainImage = document.getElementById(product.key + '_main_image');
+          const preview = document.getElementById(product.key + '_preview');
+
+          if (mainImage) mainImage.src = product.defaultImage;
+          if (preview) preview.style.background = '#ffffff';
         });
 
       } catch (error) {
