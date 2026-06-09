@@ -405,311 +405,379 @@
     </div>
   </form>
 
-  <script>
-    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzUgiQkWVGC1W9-dD01eY1CDXwOZtg-shaknJINchvDfJ1VxXxdAEC-w8O69zYohVTF/exec';
+<!-- IMPORTANT:
+Use your existing Men's full HTML code.
+Replace ONLY the <script> section with this updated <script>.
+-->
 
-    const UA_SIZES = ['S', 'M', 'L', 'XL', '2XL', '3XL', '4XL'];
-    const STANDARD_SIZES = ['S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'];
-    const EB534_SIZES = ['S', 'M', 'L', 'XL', '2XL', '3XL', '4XL'];
-    const PORT_AUTHORITY_SIZES = ['S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'];
+<script>
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzUgiQkWVGC1W9-dD01eY1CDXwOZtg-shaknJINchvDfJ1VxXxdAEC-w8O69zYohVTF/exec';
 
-    const products = [
-      {
-        number: 1,
-        title: 'Under Armour Tech Polo Shirt',
-        item: 'UA 1370399',
-        key: 'under_armour_tech_polo',
-        defaultImage: 'https://i.imgur.com/jDGap5A.jpeg',
-        sizes: UA_SIZES,
-        colors: [
-          { name: 'White/Graphite', preview: '#f8fafc', image: 'https://i.imgur.com/5NRzrBN.jpeg' },
-          { name: 'Graphite/Black', preview: '#4b5563', image: 'https://i.imgur.com/9Of9kGL.jpeg' },
-          { name: 'Royal/Graphite', preview: '#1d4ed8', image: 'https://i.imgur.com/jDGap5A.jpeg' },
-          { name: 'Red/Graphite', preview: '#dc2626', image: 'https://i.imgur.com/QrtHa7I.jpeg' },
-          { name: 'Navy/Graphite', preview: '#172554', image: 'https://i.imgur.com/I99mMXK.jpeg' },
-          { name: 'Black/Graphite', preview: '#111827', image: 'https://i.imgur.com/FukI3OW.jpeg' }
-        ]
-      },
-      {
-        number: 2,
-        title: 'Port Authority Easy Care Shirt – Short Sleeve',
-        item: 'S508',
-        key: 'pa_easy_care_short_sleeve',
-        defaultImage: 'https://i.imgur.com/Ovl19pQ.jpeg',
-        sizes: PORT_AUTHORITY_SIZES,
-        tallAvailable: true,
-        blueNote: 'Tall option is available for this item only.',
-        colors: [
-          { name: 'White', preview: '#ffffff', image: 'https://i.imgur.com/IjY8xoX.jpeg' },
-          { name: 'Stone', preview: '#c9b8a2', image: 'https://i.imgur.com/jXqCr6H.jpeg' },
-          { name: 'Black', preview: '#111827', image: 'https://i.imgur.com/Ovl19pQ.jpeg' }
-        ]
-      },
-      {
-        number: 3,
-        title: 'Port Authority Easy Care Shirt – Long Sleeve',
-        item: 'S608',
-        key: 'pa_easy_care_long_sleeve',
-        defaultImage: 'https://i.imgur.com/QhxiClD.jpeg',
-        sizes: PORT_AUTHORITY_SIZES,
-        tallAvailable: true,
-        blueNote: 'Tall option is available for this item only.',
-        colors: [
-          { name: 'White', preview: '#ffffff', image: 'https://i.imgur.com/91aP9B7.jpeg' },
-          { name: 'Stone', preview: '#c9b8a2', image: 'https://i.imgur.com/RXnJr8c.jpeg' },
-          { name: 'Black', preview: '#111827', image: 'https://i.imgur.com/QhxiClD.jpeg' }
-        ]
-      },
-      {
-        number: 4,
-        title: 'Eddie Bauer Short Sleeve Fishing Shirt',
-        item: 'EB602',
-        key: 'eddie_bauer_fishing_shirt',
-        defaultImage: 'https://i.imgur.com/a85W3I3.jpeg',
-        sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL', '4XL'],
-        colors: [
-          { name: 'Driftwood', preview: '#c8bda6', image: 'https://i.imgur.com/LLbvZeY.jpeg' },
-          { name: 'Gulf Teal', preview: '#6e8fa8', image: 'https://i.imgur.com/C9Xc2Ea.jpeg' },
-          { name: 'Boulder', preview: '#222222', image: 'https://i.imgur.com/a85W3I3.jpeg' },
-          { name: 'White', preview: '#ffffff', image: 'https://i.imgur.com/iJJr5SK.jpeg' }
-        ]
-      },
-      {
-        number: 5,
-        title: 'North End Men’s Rain Jacket',
-        item: '88083',
-        key: 'north_end_rain_jacket',
-        defaultImage: 'https://i.imgur.com/mvZ0JZH.jpeg',
-        sizes: STANDARD_SIZES,
-        blueNote: 'Optional jacket selection: You may select this OR the Eddie Bauer jacket in addition to your 5 shirts.',
-        redNote: 'This item will be ordered after employee’s 90 day review.',
-        colors: [
-          { name: 'Midnight Navy', preview: '#111827', image: 'https://i.imgur.com/T63S5na.jpeg' },
-          { name: 'Black', preview: '#000000', image: 'https://i.imgur.com/mvZ0JZH.jpeg' }
-        ]
-      },
-      {
-        number: 6,
-        title: 'Eddie Bauer Soft Shell Jacket',
-        item: 'EB534',
-        key: 'eddie_bauer_soft_shell_jacket',
-        defaultImage: 'https://i.imgur.com/hT9QXh8.jpeg',
-        sizes: EB534_SIZES,
-        blueNote: 'Optional jacket selection: You may select this OR the North End jacket in addition to your 5 shirts.',
-        redNote: 'This item will be ordered after employee’s 90 day review.',
-        colors: [
-          { name: 'Canteen Grey/Black', preview: '#6b7280', image: 'https://i.imgur.com/CXA0TeW.jpeg' },
-          { name: 'Grey Steel/Black', preview: '#9ca3af', image: 'https://i.imgur.com/98JBZdY.jpeg' },
-          { name: 'Black/Black', preview: '#000000', image: 'https://i.imgur.com/hT9QXh8.jpeg' }
-        ]
-      }
-    ];
+const CUSTOMER_CARE_SIZES = ['S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'];
+const CUSTOMER_CARE_LIMITED_SIZES = ['S', 'M', 'L', 'XL', '2XL', '3XL'];
+const UA_SIZES = ['S', 'M', 'L', 'XL', '2XL', '3XL', '4XL'];
+const STANDARD_SIZES = ['S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'];
+const EB534_SIZES = ['S', 'M', 'L', 'XL', '2XL', '3XL', '4XL'];
+const PORT_AUTHORITY_SIZES = ['S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'];
 
-    function renderProducts() {
-      const mount = document.getElementById('products');
-      mount.innerHTML = '';
+const products = [
+  {
+    number: 1,
+    title: 'Cutter & Buck Pike Recycled Pebble Print Polo',
+    item: 'MCK01304',
+    key: 'pike_pebble_print_polo',
+    defaultImage: 'https://i.imgur.com/mCvoJRh.jpeg',
+    sizes: CUSTOMER_CARE_LIMITED_SIZES,
+    blueNote: 'This item is not available in sizes 4XL and 5XL.',
+    colors: [
+      { name: 'Polished/White', swatch: 'https://i.imgur.com/IMKE3wP.jpeg', image: 'https://i.imgur.com/dJC9qOt.jpeg' },
+      { name: 'Black/White', swatch: 'https://i.imgur.com/3dlHNj2.jpeg', image: 'https://i.imgur.com/mCvoJRh.jpeg' },
+      { name: 'Navy Blue/White', swatch: 'https://i.imgur.com/lBo7aSu.jpeg', image: 'https://i.imgur.com/Od6zk5E.jpeg' }
+    ]
+  },
+  {
+    number: 2,
+    title: 'Cutter & Buck Pike Recycled Flora Print Polo',
+    item: 'MCK01344',
+    key: 'pike_flora_print_polo',
+    defaultImage: 'https://i.imgur.com/bL59A8q.jpeg',
+    sizes: CUSTOMER_CARE_SIZES,
+    colors: [
+      { name: 'Atlas', swatch: 'https://i.imgur.com/9E4TK9W.jpeg', image: 'https://i.imgur.com/bL59A8q.jpeg' },
+      { name: 'Black', swatch: 'https://i.imgur.com/ejZTXsG.jpeg', image: 'https://i.imgur.com/CnUmeHe.jpeg' },
+      { name: 'Chelan', swatch: 'https://i.imgur.com/N93gZPU.jpeg', image: 'https://i.imgur.com/Ta53nn5.jpeg' },
+      { name: 'College Purple', swatch: 'https://i.imgur.com/k3VFsH2.jpeg', image: 'https://i.imgur.com/I4p0Mw3.jpeg' },
+      { name: 'Navy Blue', swatch: 'https://i.imgur.com/6vSr6EO.jpeg', image: 'https://i.imgur.com/NU70C2X.jpeg' }
+    ]
+  },
+  {
+    number: 3,
+    title: 'Cutter & Buck Pike Recycled Shadow Check Print Polo',
+    item: 'MCK01342',
+    key: 'pike_shadow_check_polo',
+    defaultImage: 'https://i.imgur.com/czbfwuc.jpeg',
+    sizes: CUSTOMER_CARE_SIZES,
+    colors: [
+      { name: 'Polished', swatch: 'https://i.imgur.com/JuhBpoy.jpeg', image: 'https://i.imgur.com/PXBps2Q.jpeg' },
+      { name: 'Black', swatch: 'https://i.imgur.com/wk5rMh5.jpeg', image: 'https://i.imgur.com/bTyt2Nk.jpeg' },
+      { name: 'Navy Blue', swatch: 'https://i.imgur.com/oovkDfp.jpeg', image: 'https://i.imgur.com/1ZsHdyx.jpeg' },
+      { name: 'Hyacinth', swatch: 'https://i.imgur.com/Dhr6sC4.jpeg', image: 'https://i.imgur.com/7lohPpU.jpeg' }
+    ]
+  },
+  {
+    number: 4,
+    title: 'Cutter & Buck Forge Recycled Four-Way Stretch Polo',
+    item: 'MCK01236',
+    key: 'forge_stretch_polo',
+    defaultImage: 'https://i.imgur.com/0SyPNc3.jpeg',
+    sizes: CUSTOMER_CARE_SIZES,
+    colors: [
+      { name: 'White', swatch: 'https://i.imgur.com/KRUjMTw.jpeg', image: 'https://i.imgur.com/57SkrVj.jpeg' },
+      { name: 'Elemental Grey', swatch: 'https://i.imgur.com/QJGpclA.jpeg', image: 'https://i.imgur.com/xpVzig9.jpeg' },
+      { name: 'Black', swatch: 'https://i.imgur.com/I3lvpmw.jpeg', image: 'https://i.imgur.com/vDWUJNI.jpeg' },
+      { name: 'Dark Hunter Heather', swatch: 'https://i.imgur.com/4vNsJCX.jpeg', image: 'https://i.imgur.com/PtsAbWp.jpeg' },
+      { name: 'Dark Atlas Heather', swatch: 'https://i.imgur.com/P2WFROV.jpeg', image: 'https://i.imgur.com/qGasNOt.jpeg' },
+      { name: 'Tour Blue', swatch: 'https://i.imgur.com/ZXwiVxv.jpeg', image: 'https://i.imgur.com/vMR5SXl.jpeg' },
+      { name: 'Dark Navy Heather', swatch: 'https://i.imgur.com/2dgxN1B.jpeg', image: 'https://i.imgur.com/0lffXyU.jpeg' }
+    ]
+  },
+  {
+    number: 5,
+    title: 'Under Armour Tech Polo Shirt',
+    item: 'UA 1370399',
+    key: 'under_armour_tech_polo',
+    defaultImage: 'https://i.imgur.com/jDGap5A.jpeg',
+    sizes: UA_SIZES,
+    colors: [
+      { name: 'White/Graphite', preview: '#f8fafc', image: 'https://i.imgur.com/5NRzrBN.jpeg' },
+      { name: 'Graphite/Black', preview: '#4b5563', image: 'https://i.imgur.com/9Of9kGL.jpeg' },
+      { name: 'Royal/Graphite', preview: '#1d4ed8', image: 'https://i.imgur.com/jDGap5A.jpeg' },
+      { name: 'Red/Graphite', preview: '#dc2626', image: 'https://i.imgur.com/QrtHa7I.jpeg' },
+      { name: 'Navy/Graphite', preview: '#172554', image: 'https://i.imgur.com/I99mMXK.jpeg' },
+      { name: 'Black/Graphite', preview: '#111827', image: 'https://i.imgur.com/FukI3OW.jpeg' }
+    ]
+  },
+  {
+    number: 6,
+    title: 'Port Authority Easy Care Shirt – Short Sleeve',
+    item: 'S508',
+    key: 'pa_easy_care_short_sleeve',
+    defaultImage: 'https://i.imgur.com/Ovl19pQ.jpeg',
+    sizes: PORT_AUTHORITY_SIZES,
+    tallAvailable: true,
+    blueNote: 'Tall option is available for this item only.',
+    colors: [
+      { name: 'White', preview: '#ffffff', image: 'https://i.imgur.com/IjY8xoX.jpeg' },
+      { name: 'Stone', preview: '#c9b8a2', image: 'https://i.imgur.com/jXqCr6H.jpeg' },
+      { name: 'Black', preview: '#111827', image: 'https://i.imgur.com/Ovl19pQ.jpeg' }
+    ]
+  },
+  {
+    number: 7,
+    title: 'Port Authority Easy Care Shirt – Long Sleeve',
+    item: 'S608',
+    key: 'pa_easy_care_long_sleeve',
+    defaultImage: 'https://i.imgur.com/QhxiClD.jpeg',
+    sizes: PORT_AUTHORITY_SIZES,
+    tallAvailable: true,
+    blueNote: 'Tall option is available for this item only.',
+    colors: [
+      { name: 'White', preview: '#ffffff', image: 'https://i.imgur.com/91aP9B7.jpeg' },
+      { name: 'Stone', preview: '#c9b8a2', image: 'https://i.imgur.com/RXnJr8c.jpeg' },
+      { name: 'Black', preview: '#111827', image: 'https://i.imgur.com/QhxiClD.jpeg' }
+    ]
+  },
+  {
+    number: 8,
+    title: 'Eddie Bauer Short Sleeve Fishing Shirt',
+    item: 'EB602',
+    key: 'eddie_bauer_fishing_shirt',
+    defaultImage: 'https://i.imgur.com/a85W3I3.jpeg',
+    sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL', '4XL'],
+    colors: [
+      { name: 'Driftwood', preview: '#c8bda6', image: 'https://i.imgur.com/LLbvZeY.jpeg' },
+      { name: 'Gulf Teal', preview: '#6e8fa8', image: 'https://i.imgur.com/C9Xc2Ea.jpeg' },
+      { name: 'Boulder', preview: '#222222', image: 'https://i.imgur.com/a85W3I3.jpeg' },
+      { name: 'White', preview: '#ffffff', image: 'https://i.imgur.com/iJJr5SK.jpeg' }
+    ]
+  },
+  {
+    number: 9,
+    title: 'North End Men’s Rain Jacket',
+    item: '88083',
+    key: 'north_end_rain_jacket',
+    defaultImage: 'https://i.imgur.com/mvZ0JZH.jpeg',
+    sizes: STANDARD_SIZES,
+    blueNote: 'Optional jacket selection: You may select this OR the Eddie Bauer jacket in addition to your 5 shirts.',
+    redNote: 'This item will be ordered after employee’s 90 day review.',
+    colors: [
+      { name: 'Midnight Navy', preview: '#111827', image: 'https://i.imgur.com/T63S5na.jpeg' },
+      { name: 'Black', preview: '#000000', image: 'https://i.imgur.com/mvZ0JZH.jpeg' }
+    ]
+  },
+  {
+    number: 10,
+    title: 'Eddie Bauer Soft Shell Jacket',
+    item: 'EB534',
+    key: 'eddie_bauer_soft_shell_jacket',
+    defaultImage: 'https://i.imgur.com/hT9QXh8.jpeg',
+    sizes: EB534_SIZES,
+    blueNote: 'Optional jacket selection: You may select this OR the North End jacket in addition to your 5 shirts.',
+    redNote: 'This item will be ordered after employee’s 90 day review.',
+    colors: [
+      { name: 'Canteen Grey/Black', preview: '#6b7280', image: 'https://i.imgur.com/CXA0TeW.jpeg' },
+      { name: 'Grey Steel/Black', preview: '#9ca3af', image: 'https://i.imgur.com/98JBZdY.jpeg' },
+      { name: 'Black/Black', preview: '#000000', image: 'https://i.imgur.com/hT9QXh8.jpeg' }
+    ]
+  }
+];
 
-      products.forEach(product => {
-        const section = document.createElement('section');
-        section.className = 'product';
+function renderProducts() {
+  const mount = document.getElementById('products');
+  mount.innerHTML = '';
 
-        section.innerHTML = `
-          <div class="product-bar">
-            <div class="product-title">${product.number}. ${product.title}</div>
-            <div class="item-number">Item #: ${product.item}</div>
-          </div>
+  products.forEach(product => {
+    const section = document.createElement('section');
+    section.className = 'product';
 
-          <div class="product-body">
-            <div class="product-image">
-              <img id="${product.key}_main_image" src="${product.defaultImage}" alt="${product.title}">
-            </div>
+    section.innerHTML = `
+      <div class="product-bar">
+        <div class="product-title">${product.number}. ${product.title}</div>
+        <div class="item-number">Item #: ${product.item}</div>
+      </div>
 
-            <div>
-              ${product.blueNote ? `<div class="note-blue">${product.blueNote}</div>` : ''}
-              ${product.redNote ? `<div class="note-red">${product.redNote}</div>` : ''}
-
-              <div class="table-block">
-                <div class="table-title">Order Details</div>
-
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Color</th>
-                      <th style="width:150px;">Size</th>
-                      ${product.tallAvailable ? '<th style="width:130px;">Tall Needed?</th>' : ''}
-                      <th style="width:95px;">Qty</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr class="order-row" data-product-key="${product.key}">
-                      <td>${colorDropdown(product)}</td>
-                      <td>${sizeDropdown(product)}</td>
-                      ${product.tallAvailable ? tallDropdown(product) : ''}
-                      <td>
-                        <input class="qty-input qty" type="number" min="0" name="${product.key}_qty" />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <div class="small-muted">
-                Select one color and size for this item. Product image will update when a color is selected.
-              </div>
-            </div>
-          </div>
-        `;
-
-        mount.appendChild(section);
-      });
-
-      document.querySelectorAll('.qty').forEach(input => {
-        input.addEventListener('input', updateTotal);
-      });
-    }
-
-    function colorDropdown(product) {
-      return `
-        <div class="color-select-wrap">
-          <span class="swatch color-preview" id="${product.key}_preview"></span>
-          <select name="${product.key}_color" onchange="updateColorSelection(this, '${product.key}')">
-            <option value="">Select color</option>
-            ${product.colors.map(color => `
-              <option
-                value="${color.name}"
-                data-image="${color.image || ''}"
-                data-color="${color.preview || '#ffffff'}">
-                ${color.name}
-              </option>
-            `).join('')}
-          </select>
+      <div class="product-body">
+        <div class="product-image">
+          <img id="${product.key}_main_image" src="${product.defaultImage}" alt="${product.title}">
         </div>
-      `;
+
+        <div>
+          ${product.blueNote ? `<div class="note-blue">${product.blueNote}</div>` : ''}
+          ${product.redNote ? `<div class="note-red">${product.redNote}</div>` : ''}
+
+          <div class="table-block">
+            <div class="table-title">Order Details</div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Color</th>
+                  <th style="width:150px;">Size</th>
+                  ${product.tallAvailable ? '<th style="width:130px;">Tall Needed?</th>' : ''}
+                  <th style="width:95px;">Qty</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>${colorDropdown(product)}</td>
+                  <td>${sizeDropdown(product)}</td>
+                  ${product.tallAvailable ? tallDropdown(product) : ''}
+                  <td><input class="qty-input qty" type="number" min="0" name="${product.key}_qty" /></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="small-muted">
+            Select one color and size for this item. Product image will update when a color is selected.
+          </div>
+        </div>
+      </div>
+    `;
+
+    mount.appendChild(section);
+  });
+
+  document.querySelectorAll('.qty').forEach(input => {
+    input.addEventListener('input', updateTotal);
+  });
+}
+
+function colorDropdown(product) {
+  return `
+    <div class="color-select-wrap">
+      <span class="swatch color-preview" id="${product.key}_preview"></span>
+      <select name="${product.key}_color" onchange="updateColorSelection(this, '${product.key}')">
+        <option value="">Select color</option>
+        ${product.colors.map(color => `
+          <option
+            value="${color.name}"
+            data-swatch="${color.swatch || ''}"
+            data-image="${color.image || ''}"
+            data-color="${color.preview || '#ffffff'}">
+            ${color.name}
+          </option>
+        `).join('')}
+      </select>
+    </div>
+  `;
+}
+
+function sizeDropdown(product) {
+  return `
+    <select name="${product.key}_size">
+      <option value="">Select size</option>
+      ${product.sizes.map(size => `<option value="${size}">${size}</option>`).join('')}
+    </select>
+  `;
+}
+
+function tallDropdown(product) {
+  return `
+    <td>
+      <select name="${product.key}_tall_needed">
+        <option value="No">No</option>
+        <option value="Yes">Yes</option>
+      </select>
+    </td>
+  `;
+}
+
+function isPlaceholder(value) {
+  return !value || value.includes('PASTE_') || value.includes('_HERE');
+}
+
+function updateColorSelection(select, productKey) {
+  const selectedOption = select.options[select.selectedIndex];
+  const swatchUrl = selectedOption.dataset.swatch || '';
+  const imageUrl = selectedOption.dataset.image || '';
+  const previewColor = selectedOption.dataset.color || '#ffffff';
+
+  const preview = document.getElementById(productKey + '_preview');
+  const mainImage = document.getElementById(productKey + '_main_image');
+  const product = products.find(item => item.key === productKey);
+
+  if (preview) {
+    if (!isPlaceholder(swatchUrl)) {
+      preview.style.backgroundImage = `url('${swatchUrl}')`;
+      preview.style.backgroundColor = '#ffffff';
+    } else {
+      preview.style.backgroundImage = '';
+      preview.style.backgroundColor = previewColor;
     }
+  }
 
-    function sizeDropdown(product) {
-      return `
-        <select name="${product.key}_size">
-          <option value="">Select size</option>
-          ${product.sizes.map(size => `<option value="${size}">${size}</option>`).join('')}
-        </select>
-      `;
+  if (mainImage && product) {
+    mainImage.src = !isPlaceholder(imageUrl) ? imageUrl : product.defaultImage;
+  }
+}
+
+function safeName(value) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+}
+
+function updateTotal() {
+  let total = 0;
+  document.querySelectorAll('.qty').forEach(input => {
+    total += Number(input.value || 0);
+  });
+  document.getElementById('totalQty').textContent = total;
+}
+
+async function submitOrder() {
+  const form = document.getElementById('orderForm');
+  const status = document.getElementById('status');
+
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  status.textContent = 'Submitting...';
+
+  const data = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    location: document.getElementById('location').value,
+    notes: document.getElementById('notes').value,
+    formTitle: '2026 Production/Warranty – Men’s Order Form',
+    submittedAt: new Date().toISOString()
+  };
+
+  products.forEach(product => {
+    const color = document.querySelector(`[name="${product.key}_color"]`).value;
+    const size = document.querySelector(`[name="${product.key}_size"]`).value;
+    const qty = Number(document.querySelector(`[name="${product.key}_qty"]`).value || 0);
+    const tallNeededField = document.querySelector(`[name="${product.key}_tall_needed"]`);
+    const tallNeeded = tallNeededField ? tallNeededField.value : 'No';
+
+    if (qty > 0 && color && size) {
+      const uniqueKey = `${product.key}_${safeName(color)}_${safeName(size)}`;
+      data[uniqueKey + '_qty'] = qty;
+      data[uniqueKey + '_size'] = size;
+      data[uniqueKey + '_color'] = color;
+      data[uniqueKey + '_tall_needed'] = tallNeeded;
     }
+  });
 
-    function tallDropdown(product) {
-      return `
-        <td>
-          <select name="${product.key}_tall_needed">
-            <option value="No">No</option>
-            <option value="Yes">Yes</option>
-          </select>
-        </td>
-      `;
-    }
+  try {
+    await fetch(WEB_APP_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(data)
+    });
 
-    function isPlaceholder(value) {
-      return !value || value.includes('PASTE_') || value.includes('_HERE');
-    }
+    status.textContent = 'Submitted successfully. Thank you!';
+    form.reset();
+    document.getElementById('totalQty').textContent = '0';
 
-    function updateColorSelection(select, productKey) {
-      const selectedOption = select.options[select.selectedIndex];
-      const imageUrl = selectedOption.dataset.image || '';
-      const previewColor = selectedOption.dataset.color || '#ffffff';
-      const mainImage = document.getElementById(productKey + '_main_image');
-      const preview = document.getElementById(productKey + '_preview');
-      const product = products.find(item => item.key === productKey);
-
+    products.forEach(product => {
+      const mainImage = document.getElementById(product.key + '_main_image');
+      const preview = document.getElementById(product.key + '_preview');
+      if (mainImage) mainImage.src = product.defaultImage;
       if (preview) {
-        preview.style.background = previewColor;
+        preview.style.backgroundImage = '';
+        preview.style.backgroundColor = '#ffffff';
       }
+    });
 
-      if (!mainImage || !product) return;
+  } catch (error) {
+    status.textContent = 'Submission failed. Please try again.';
+    console.error(error);
+  }
+}
 
-      if (!isPlaceholder(imageUrl)) {
-        mainImage.src = imageUrl;
-      } else {
-        mainImage.src = product.defaultImage;
-      }
-    }
-
-    function safeName(value) {
-      return value.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
-    }
-
-    function updateTotal() {
-      let total = 0;
-
-      document.querySelectorAll('.qty').forEach(input => {
-        total += Number(input.value || 0);
-      });
-
-      document.getElementById('totalQty').textContent = total;
-    }
-
-    async function submitOrder() {
-      const form = document.getElementById('orderForm');
-      const status = document.getElementById('status');
-
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
-
-      status.textContent = 'Submitting...';
-
-      const data = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        location: document.getElementById('location').value,
-        notes: document.getElementById('notes').value,
-        formTitle: '2026 Production/Warranty – Men’s Order Form',
-        submittedAt: new Date().toISOString()
-      };
-
-      products.forEach(product => {
-        const color = document.querySelector(`[name="${product.key}_color"]`).value;
-        const size = document.querySelector(`[name="${product.key}_size"]`).value;
-        const qty = Number(document.querySelector(`[name="${product.key}_qty"]`).value || 0);
-        const tallNeededField = document.querySelector(`[name="${product.key}_tall_needed"]`);
-        const tallNeeded = tallNeededField ? tallNeededField.value : 'No';
-
-        if (qty > 0 && color && size) {
-          const uniqueKey = `${product.key}_${safeName(color)}_${safeName(size)}`;
-          data[uniqueKey + '_qty'] = qty;
-          data[uniqueKey + '_size'] = size;
-          data[uniqueKey + '_color'] = color;
-          data[uniqueKey + '_tall_needed'] = tallNeeded;
-        }
-      });
-
-      try {
-        await fetch(WEB_APP_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain' },
-          body: JSON.stringify(data)
-        });
-
-        status.textContent = 'Submitted successfully. Thank you!';
-        form.reset();
-        document.getElementById('totalQty').textContent = '0';
-
-        products.forEach(product => {
-          const mainImage = document.getElementById(product.key + '_main_image');
-          const preview = document.getElementById(product.key + '_preview');
-
-          if (mainImage) mainImage.src = product.defaultImage;
-          if (preview) preview.style.background = '#ffffff';
-        });
-
-      } catch (error) {
-        status.textContent = 'Submission failed. Please try again.';
-        console.error(error);
-      }
-    }
-
-    renderProducts();
-  </script>
+renderProducts();
+</script>
 </body>
 </html>
