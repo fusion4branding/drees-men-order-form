@@ -318,6 +318,7 @@
       margin-right: auto;
     }
 
+    .add-cart-btn{margin-top:12px;width:100%}.cart-list{margin-top:12px;display:grid;gap:8px}.cart-entry{display:grid;grid-template-columns:64px 1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px;background:#f8fafc}.cart-entry img{width:64px;height:64px;object-fit:contain;background:white;border-radius:8px}.remove-cart{background:#fef2f2;color:var(--danger);padding:8px 10px;border-radius:9px;font-size:12px}.review-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.58);padding:24px;overflow:auto}.review-overlay.open{display:flex}.review-box{width:min(900px,100%);background:white;border-radius:16px;padding:24px;margin:auto}.review-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:14px}.review-head h2{margin:0}.review-close{background:#e2e8f0;color:#334155;padding:9px 12px}.review-person{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:12px;background:#f8fafc;border-radius:10px;margin-bottom:14px;font-size:13px}.review-items{display:grid;gap:10px}.review-item{display:grid;grid-template-columns:72px 1fr auto;gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:10px}.review-item img{width:72px;height:72px;object-fit:contain}.review-item h4,.review-item p{margin:2px 0}.review-item p{font-size:12px;color:var(--muted)}.review-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}
     @media (max-width: 900px) {
       .page {
         margin: 0;
@@ -401,8 +402,9 @@
 
     <div class="actions">
       <span class="status" id="status">Ready to submit.</span>
-      <button type="button" onclick="submitOrder()">Submit Order</button>
+      <button type="button" onclick="reviewOrder()">Review Order</button>
     </div>
+    <div class="review-overlay" id="reviewOverlay"><div class="review-box"><div class="review-head"><h2>Review Your Order</h2><button type="button" class="review-close" onclick="closeReview()">Back to Edit</button></div><div class="review-person" id="reviewPerson"></div><div class="review-items" id="reviewItems"></div><div class="review-actions"><button type="button" class="review-close" onclick="closeReview()">Back to Edit</button><button type="button" id="confirmSubmitBtn" onclick="submitOrder()">Confirm &amp; Submit Order</button></div></div></div>
   </form>
 
 <!-- IMPORTANT:
@@ -412,6 +414,7 @@ Replace ONLY the <script> section with this updated <script>.
 
 <script>
 const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzUgiQkWVGC1W9-dD01eY1CDXwOZtg-shaknJINchvDfJ1VxXxdAEC-w8O69zYohVTF/exec';
+const cartItems = [];
 
 const CUSTOMER_CARE_SIZES = ['S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'];
 const CUSTOMER_CARE_LIMITED_SIZES = ['S', 'M', 'L', 'XL', '2XL', '3XL'];
@@ -617,9 +620,9 @@ function renderProducts() {
             </table>
           </div>
 
-          <div class="small-muted">
-            Select one color and size for this item. Product image will update when a color is selected.
-          </div>
+          <button type="button" class="add-cart-btn" onclick="addToCart('${product.key}')">Add to Cart</button>
+          <div class="cart-list" id="${product.key}_cart"></div>
+          <div class="small-muted">Select a color, size, and quantity, then click <strong>Add to Cart</strong>. To order the same item in another color or size, add the next selection separately.</div>
         </div>
       </div>
     `;
@@ -705,14 +708,13 @@ function safeName(value) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
 }
 
-function updateTotal() {
-  let total = 0;
-  document.querySelectorAll('.qty').forEach(input => {
-    total += Number(input.value || 0);
-  });
-  document.getElementById('totalQty').textContent = total;
-}
-
+function updateTotal(){document.getElementById('totalQty').textContent=cartItems.reduce((n,x)=>n+Number(x.qty||0),0)}
+function addToCart(k){const p=products.find(x=>x.key===k),c=document.querySelector(`[name="${k}_color"]`),z=document.querySelector(`[name="${k}_size"]`),q=document.querySelector(`[name="${k}_qty"]`),t=document.querySelector(`[name="${k}_tall_needed"]`);if(!c.value)return alert('Please select a color.');if(!z.value)return alert('Please select a size.');if(Number(q.value||0)<=0)return alert('Please enter a quantity.');const co=p.colors.find(x=>x.name===c.value);cartItems.push({id:Date.now()+'-'+Math.random().toString(36).slice(2),productKey:k,item:p.item,title:p.title,color:c.value,size:z.value,qty:Number(q.value),tallNeeded:t?t.value:'No',image:(co&&co.image)||p.defaultImage});q.value='';c.value='';z.value='';if(t)t.value='No';updateColorSelection(c,k);renderCart(k);updateTotal()}
+function renderCart(k){const m=document.getElementById(k+'_cart');m.innerHTML=cartItems.filter(x=>x.productKey===k).map(x=>`<div class="cart-entry"><img src="${x.image}" alt=""><div><strong>${x.color}</strong><br><span>Size: ${x.size}${x.tallNeeded==='Yes'?' · Tall: Yes':''} · Qty: ${x.qty}</span></div><button type="button" class="remove-cart" onclick="removeCart('${x.id}')">Remove</button></div>`).join('')}
+function removeCart(id){const i=cartItems.findIndex(x=>x.id===id);if(i<0)return;const k=cartItems[i].productKey;cartItems.splice(i,1);renderCart(k);updateTotal()}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function closeReview(){document.getElementById('reviewOverlay').classList.remove('open')}
+function reviewOrder(){const f=document.getElementById('orderForm');if(!f.checkValidity()){f.reportValidity();return}if(products.some(p=>Number(document.querySelector(`[name="${p.key}_qty"]`).value||0)>0))return alert('You have a quantity entered that has not been added to the cart. Please click Add to Cart first.');if(!cartItems.length)return alert('Please add at least one item to the cart.');reviewPerson.innerHTML=`<div><strong>Name</strong><br>${esc(name.value)}</div><div><strong>Email</strong><br>${esc(email.value)}</div><div><strong>Location</strong><br>${esc(location.value)}</div>`;reviewItems.innerHTML=cartItems.map(x=>`<div class="review-item"><img src="${x.image}" alt=""><div><h4>${esc(x.title)}</h4><p>Item #: ${esc(x.item)}</p><p><strong>${esc(x.color)}</strong> · Size ${esc(x.size)}${x.tallNeeded==='Yes'?' · Tall: Yes':''}</p></div><strong>Qty ${x.qty}</strong></div>`).join('');reviewOverlay.classList.add('open')}
 async function submitOrder() {
   const form = document.getElementById('orderForm');
   const status = document.getElementById('status');
@@ -733,21 +735,8 @@ async function submitOrder() {
     submittedAt: new Date().toISOString()
   };
 
-  products.forEach(product => {
-    const color = document.querySelector(`[name="${product.key}_color"]`).value;
-    const size = document.querySelector(`[name="${product.key}_size"]`).value;
-    const qty = Number(document.querySelector(`[name="${product.key}_qty"]`).value || 0);
-    const tallNeededField = document.querySelector(`[name="${product.key}_tall_needed"]`);
-    const tallNeeded = tallNeededField ? tallNeededField.value : 'No';
-
-    if (qty > 0 && color && size) {
-      const uniqueKey = `${product.key}_${safeName(color)}_${safeName(size)}`;
-      data[uniqueKey + '_qty'] = qty;
-      data[uniqueKey + '_size'] = size;
-      data[uniqueKey + '_color'] = color;
-      data[uniqueKey + '_tall_needed'] = tallNeeded;
-    }
-  });
+  if(!cartItems.length){status.textContent='Please add at least one item to the cart.';closeReview();return;}
+  cartItems.forEach(entry=>{const uniqueKey=`${entry.productKey}_${safeName(entry.color)}_${safeName(entry.size)}_${entry.id.replace(/[^a-z0-9]/gi,'')}`;data[uniqueKey+'_qty']=entry.qty;data[uniqueKey+'_size']=entry.size;data[uniqueKey+'_color']=entry.color;data[uniqueKey+'_tall_needed']=entry.tallNeeded;data[uniqueKey+'_item']=entry.item;});
 
   try {
     await fetch(WEB_APP_URL, {
@@ -758,7 +747,7 @@ async function submitOrder() {
     });
 
     status.textContent = 'Submitted successfully. Thank you!';
-    form.reset();
+    form.reset(); cartItems.length=0; document.querySelectorAll('.cart-list').forEach(x=>x.innerHTML=''); closeReview();
     document.getElementById('totalQty').textContent = '0';
 
     products.forEach(product => {
