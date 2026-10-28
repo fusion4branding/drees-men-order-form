@@ -361,6 +361,8 @@
         <div>
           <label for="name">Name</label>
           <input id="name" name="name" required />
+          <label for="managerName" style="margin-top:12px;">Manager Name</label>
+          <input id="managerName" name="managerName" required />
         </div>
 
         <div>
@@ -728,7 +730,7 @@ function renderCart(k){const m=document.getElementById(k+'_cart');m.innerHTML=ca
 function removeCart(id){const i=cartItems.findIndex(x=>x.id===id);if(i<0)return;const k=cartItems[i].productKey;cartItems.splice(i,1);renderCart(k);updateTotal()}
 function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function closeReview(){document.getElementById('reviewOverlay').classList.remove('open')}
-function reviewOrder(){const f=document.getElementById('orderForm');if(!f.checkValidity()){f.reportValidity();return}if(products.some(p=>Number(document.querySelector(`[name="${p.key}_qty"]`).value||0)>0))return alert('You have a quantity entered that has not been added to the cart. Please click Add to Cart first.');if(!cartItems.length)return alert('Please add at least one item to the cart.');reviewPerson.innerHTML=`<div><strong>Name</strong><br>${esc(name.value)}</div><div><strong>Email</strong><br>${esc(email.value)}</div><div><strong>Location</strong><br>${esc(location.value)}</div>`;reviewItems.innerHTML=cartItems.map(x=>`<div class="review-item"><img src="${x.image}" alt=""><div><h4>${esc(x.title)}</h4><p>Item #: ${esc(x.item)}</p><p><strong>${esc(x.color)}</strong> · Size ${esc(x.size)}${x.tallNeeded==='Yes'?' · Tall: Yes':''}</p></div><strong>Qty ${x.qty}</strong></div>`).join('');reviewOverlay.classList.add('open')}
+function reviewOrder(){const f=document.getElementById('orderForm');if(!f.checkValidity()){f.reportValidity();return}if(products.some(p=>Number(document.querySelector(`[name="${p.key}_qty"]`).value||0)>0))return alert('You have a quantity entered that has not been added to the cart. Please click Add to Cart first.');if(!cartItems.length)return alert('Please add at least one item to the cart.');reviewPerson.innerHTML=`<div><strong>Name</strong><br>${esc(document.getElementById('name').value)}</div><div><strong>Manager Name</strong><br>${esc(document.getElementById('managerName').value)}</div><div><strong>Email</strong><br>${esc(email.value)}</div><div><strong>Location</strong><br>${esc(location.value)}</div>`;reviewItems.innerHTML=cartItems.map(x=>`<div class="review-item"><img src="${x.image}" alt=""><div><h4>${esc(x.title)}</h4><p>Item #: ${esc(x.item)}</p><p><strong>${esc(x.color)}</strong> · Size ${esc(x.size)}${x.tallNeeded==='Yes'?' · Tall: Yes':''}</p></div><strong>Qty ${x.qty}</strong></div>`).join('');reviewOverlay.classList.add('open')}
 async function submitOrder() {
   const form = document.getElementById('orderForm');
   const status = document.getElementById('status');
@@ -742,6 +744,7 @@ async function submitOrder() {
 
   const data = {
     name: document.getElementById('name').value,
+    managerName: document.getElementById('managerName').value,
     email: document.getElementById('email').value,
     location: document.getElementById('location').value,
     notes: document.getElementById('notes').value,
